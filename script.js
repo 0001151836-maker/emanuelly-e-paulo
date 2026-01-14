@@ -1,12 +1,72 @@
-// Botão surpresa
-document.getElementById('surpriseBtn').addEventListener('click', function() {
-    document.getElementById('splashScreen').classList.add('hidden');
-    setTimeout(() => document.getElementById('mainContent').classList.add('visible'), 300);
+// Controle de música
+const audio = document.getElementById('backgroundMusic');
+const musicToggle = document.getElementById('musicToggle');
+const musicIcon = document.querySelector('.music-icon');
+let isPlaying = false;
+
+// Função para tocar música
+function playMusic() {
+    audio.play()
+        .then(() => {
+            isPlaying = true;
+            musicIcon.textContent = '🔊';
+            musicToggle.classList.add('playing');
+        })
+        .catch(error => {
+            console.log('Erro ao reproduzir áudio:', error);
+            // Tenta novamente após interação do usuário
+        });
+}
+
+// Função para pausar música
+function pauseMusic() {
+    audio.pause();
+    isPlaying = false;
+    musicIcon.textContent = '🎵';
+    musicToggle.classList.remove('playing');
+}
+
+// Toggle de música
+musicToggle.addEventListener('click', function() {
+    if (isPlaying) {
+        pauseMusic();
+    } else {
+        playMusic();
+    }
 });
 
-
-
-
+// Tentar tocar música quando o usuário clicar no botão surpresa
+document.getElementById('surpriseBtn').addEventListener('click', function() {
+    // Tenta tocar a música automaticamente ao clicar no botão
+    playMusic();
+    
+    // Esconde o botão e mostra a tela de loading com luzes vermelhas
+    document.getElementById('splashScreen').classList.add('hidden');
+    
+    setTimeout(() => {
+        document.getElementById('loadingScreen').classList.remove('hidden');
+        document.getElementById('loadingScreen').classList.add('visible');
+    }, 300);
+    
+    // Aguarda 4 segundos antes de mostrar a tela de aniversário
+    setTimeout(() => {
+        document.getElementById('loadingScreen').classList.remove('visible');
+        document.getElementById('loadingScreen').classList.add('hidden');
+        
+        setTimeout(() => {
+            document.getElementById('anniversaryScreen').classList.remove('hidden');
+            document.getElementById('anniversaryScreen').classList.add('visible');
+            
+            // Após 5 segundos, esconde a tela de aniversário e mostra o conteúdo principal
+            setTimeout(() => {
+                document.getElementById('anniversaryScreen').classList.add('fade-out');
+                setTimeout(() => {
+                    document.getElementById('mainContent').classList.add('visible');
+                }, 800);
+            }, 5000);
+        }, 500);
+    }, 3800);
+});
 
 // Função de contador
 function updateCountdown() {
