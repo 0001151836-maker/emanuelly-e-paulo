@@ -40,15 +40,16 @@ document.getElementById('surpriseBtn').addEventListener('click', function() {
     // Tenta tocar a música automaticamente ao clicar no botão
     playMusic();
     
-    // Esconde o botão e mostra a tela de loading com luzes vermelhas
+    // Esconde o botão
     document.getElementById('splashScreen').classList.add('hidden');
     
+    // Aguarda 1 segundo antes de mostrar as luzes vermelhas
     setTimeout(() => {
         document.getElementById('loadingScreen').classList.remove('hidden');
         document.getElementById('loadingScreen').classList.add('visible');
-    }, 300);
+    }, 1300);
     
-    // Aguarda 4 segundos antes de mostrar a tela de aniversário
+    // Aguarda 4 segundos (total) antes de mostrar a tela de aniversário
     setTimeout(() => {
         document.getElementById('loadingScreen').classList.remove('visible');
         document.getElementById('loadingScreen').classList.add('hidden');
@@ -65,7 +66,7 @@ document.getElementById('surpriseBtn').addEventListener('click', function() {
                 }, 800);
             }, 5000);
         }, 500);
-    }, 3800);
+    }, 4000);
 });
 
 // Função de contador
