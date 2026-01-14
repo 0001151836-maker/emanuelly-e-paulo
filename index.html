@@ -7,8 +7,57 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Player de Música -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-toggle" id="musicToggle">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+    
+    <!-- Áudio (coloque o nome do seu arquivo de música) -->
+    <audio id="backgroundMusic" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="splash-screen" id="splashScreen">
-        <button class="surprise-button" id="surpriseBtn">Surpresa</button>
+        <button class="surprise-button show" id="surpriseBtn">Surpresa</button>
+    </div>
+    
+    <div class="loading-screen hidden" id="loadingScreen">
+        <div class="red-lights">
+            <div class="red-light"></div>
+            <div class="red-light"></div>
+            <div class="red-light"></div>
+            <div class="red-light"></div>
+            <div class="red-light"></div>
+            <div class="red-light"></div>
+        </div>
+    </div>
+    
+    <div class="anniversary-screen hidden" id="anniversaryScreen">
+        <div class="fireworks-container">
+            <div class="firework"></div>
+            <div class="firework"></div>
+            <div class="firework"></div>
+            <div class="firework"></div>
+            <div class="firework"></div>
+        </div>
+        <div class="floating-hearts-splash">
+            <div class="heart-splash">❤️</div>
+            <div class="heart-splash">💕</div>
+            <div class="heart-splash">💖</div>
+            <div class="heart-splash">💗</div>
+            <div class="heart-splash">💓</div>
+            <div class="heart-splash">💝</div>
+            <div class="heart-splash">❤️</div>
+            <div class="heart-splash">💕</div>
+        </div>
+        <div class="anniversary-message">
+            <h1 class="anniversary-title">FELIZ 1 ANO DE NAMORO</h1>
+            <h2 class="anniversary-subtitle">MEU AMOR</h2>
+            <div class="love-text">EU TE AMO</div>
+            <div class="hearts-row">❤️ 💕 💖 💗 💓</div>
+        </div>
     </div>
 
     <div class="main-content" id="mainContent">
@@ -87,9 +136,9 @@
             <div class="timeline-section">
                 <h2 class="timeline-title">Nossos Momentos</h2>
                 <div class="timeline-header">
-                    <div class="timeline-tab">Manu & Paulo</div>
+                    <div class="timeline-tab"></div>
                     <div class="timeline-tab">Nossas Fotos</div>
-                    <div class="timeline-tab">Memórias</div>
+                    <div class="timeline-tab"></div>
                 </div>
                 <div class="timeline-photos">
                     <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200" alt="Momento 1"></div>
