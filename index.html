@@ -61,6 +61,29 @@
     </div>
 
     <div class="main-content" id="mainContent">
+        <!-- Modal de Galeria do Mês -->
+        <div class="month-modal hidden" id="monthModal">
+            <div class="month-modal-overlay" id="monthModalOverlay"></div>
+            <div class="month-modal-content">
+                <button class="month-modal-close" id="monthModalClose">&times;</button>
+                <h2 class="month-modal-title" id="monthModalTitle">Fevereiro 2025</h2>
+                <div class="month-modal-grid" id="monthModalGrid">
+                    <!-- Fotos serão inseridas aqui via JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Foto Individual -->
+        <div class="photo-modal hidden" id="photoModal">
+            <div class="photo-modal-overlay" id="photoModalOverlay"></div>
+            <div class="photo-modal-content">
+                <button class="photo-modal-close" id="photoModalClose">&times;</button>
+                <button class="photo-modal-prev" id="photoModalPrev">&#8249;</button>
+                <button class="photo-modal-next" id="photoModalNext">&#8250;</button>
+                <img src="" alt="Foto" id="photoModalImg">
+            </div>
+        </div>
+
         <div class="floating-hearts">
             <div class="heart">❤️</div>
             <div class="heart">💕</div>
@@ -115,9 +138,10 @@
             <div class="description">
                 <p>"Quando você percebe que quer passar o resto da vida com alguém, você quer que o resto da vida comece o mais rápido possível."</p>
                 <div class="heart-divider">💕</div>
-                <p>Nossa jornada começou e cada momento juntos é especial. Cada sorriso, cada abraço, cada olhar compartilhado nos traz mais perto um do outro.</p>
+                <p>os melhores momentos da minha vida são aqueles momentos que eu estou ao seu lado meu amor.</p>
+                    <p> Cada sorriso, cada abraço, cada momento bobo, são os momentos mais incriveis com a pessoa mais incrivel da minha vida</p>
                 <div class="heart-divider">💖</div>
-                <p>Este é nosso espaço para celebrar o amor, a cumplicidade e todos os momentos mágicos que vivemos lado a lado.</p>
+                <p>Este é nosso espaço com alguns dos nossos momentos mágicos que vivemos lado a lado.</p>
             </div>
 
             <div class="countdown-section">
@@ -135,20 +159,507 @@
 
             <div class="timeline-section">
                 <h2 class="timeline-title">Nossos Momentos</h2>
-                <div class="timeline-header">
-                    <div class="timeline-tab"></div>
-                    <div class="timeline-tab">Nossas Fotos</div>
-                    <div class="timeline-tab"></div>
+                <p class="timeline-subtitle">Nossa jornada ano a ano 💕</p>
+                
+                <!-- Botões de Seleção de Ano -->
+                <div class="year-buttons">
+                    <button class="year-btn active" data-year="2025">2025</button>
+                    <button class="year-btn" data-year="2026">2026</button>
                 </div>
-                <div class="timeline-photos">
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200" alt="Momento 1"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=200" alt="Momento 2"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200" alt="Momento 3"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200" alt="Momento 4"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=200" alt="Momento 5"></div>
+
+                <!-- Ano 2025 -->
+                <div class="year-content active" id="year-2025">
+                    <div class="months-grid">
+                        <!-- Fevereiro 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Fevereiro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot">
+                                    <img src="fevreiro 5.jpg" alt="Foto Fevereiro 1">
+                                </div>
+                                <div class="photo-slot">
+                                    <video src="fevereiro 1.mp4" alt="Foto Fevereiro 2">
+                                </div>
+                              <div class="photo-slot">
+                                    <video src="fevereiro 2.mp4" alt="Foto Fevereiro 3">
+                                 </div>
+                               <div class="photo-slot">
+                                    <video src="fevereiro 3.mp4" alt="Foto Fevereiro 4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Março 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Março</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Abril 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Abril</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Maio 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Maio</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Junho 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Junho</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Julho 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Julho</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agosto 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Agosto</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Setembro 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Setembro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Outubro 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Outubro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Novembro 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Novembro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dezembro 2025 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Dezembro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ano 2026 -->
+                <div class="year-content" id="year-2026">
+                    <div class="months-grid">
+                        <!-- Janeiro 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Janeiro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fevereiro 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Fevereiro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Março 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Março</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Abril 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Abril</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Maio 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Maio</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Junho 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Junho</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Julho 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Julho</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agosto 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Agosto</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Setembro 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Setembro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Outubro 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Outubro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Novembro 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Novembro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dezembro 2026 -->
+                        <div class="month-card">
+                            <div class="month-header">
+                                <h3 class="month-name">Dezembro</h3>
+                            </div>
+                            <div class="month-photos">
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                                <div class="photo-slot empty">
+                                    <span class="plus-icon">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <div class="final-counter">
                 <h2 class="final-title">Juntos Felizes</h2>
                 <div class="days-number" id="totalDays">0</div>
