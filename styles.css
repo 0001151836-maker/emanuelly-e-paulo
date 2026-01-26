@@ -661,58 +661,467 @@ body {
     font-family: 'Brush Script MT', cursive;
     font-size: 32px;
     color: #ff4757;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     text-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
 }
 
-.timeline-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 15px 10px;
-    background: #1a1a1a;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    border: 1px solid #333;
+.timeline-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
-.timeline-tab {
-    font-size: 11px;
+.year-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.year-btn {
+    padding: 12px 40px;
+    font-size: 18px;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
     color: #888;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #333;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 5px 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.timeline-photos {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    padding: 10px 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+.year-btn:hover {
+    transform: translateY(-2px);
+    border-color: #ff4757;
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.3);
 }
 
-.timeline-photos::-webkit-scrollbar {
+.year-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, #ff4757 0%, #d32f2f 100%);
+    border-color: #ff4757;
+    box-shadow: 0 6px 25px rgba(255, 71, 87, 0.5);
+}
+
+.year-content {
     display: none;
+    animation: fadeIn 0.5s ease;
 }
 
-.timeline-photo {
-    min-width: 110px;
-    height: 110px;
-    background: #2a2a2a;
+.year-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.month-card {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.month-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff4757;
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.3);
+}
+
+.month-header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #333;
+}
+
+.month-name {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 24px;
+    color: #ff4757;
+    margin-bottom: 3px;
+    text-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+}
+
+.month-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.photo-slot {
+    aspect-ratio: 1;
+    background: #222;
     border-radius: 10px;
     overflow: hidden;
     border: 2px solid #333;
     transition: all 0.3s ease;
     cursor: pointer;
-    scroll-snap-align: start;
+    position: relative;
 }
 
-.timeline-photo img {
+.photo-slot:hover {
+    border-color: #ff4757;
+    transform: scale(1.05);
+}
+
+.photo-slot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-slot:hover img {
+    transform: scale(1.1);
+}
+
+.photo-slot.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    border-style: dashed;
+}
+
+.plus-icon {
+    font-size: 32px;
+    color: #444;
+    transition: all 0.3s ease;
+}
+
+.photo-slot.empty:hover .plus-icon {
+    color: #ff4757;
+    transform: rotate(90deg);
+}
+
+/* Modal de Galeria do Mês */
+.month-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.month-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.month-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    cursor: pointer;
+}
+
+.month-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 85vh;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #ff4757;
+    border-radius: 20px;
+    padding: 30px;
+    overflow-y: auto;
+    z-index: 2;
+    box-shadow: 0 10px 50px rgba(255, 71, 87, 0.5);
+}
+
+.month-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: #ff4757;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.month-modal-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.8);
+}
+
+.month-modal-title {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 32px;
+    color: #ff4757;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(255, 71, 87, 0.5);
+}
+
+.month-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.month-modal-photo {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+.month-modal-photo:hover {
+    transform: scale(1.05);
+    border-color: #ff4757;
+    box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+}
+
+.month-modal-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.month-modal-photo.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    border-style: dashed;
+    cursor: default;
+}
+
+.month-modal-photo.empty:hover {
+    transform: none;
+    border-color: #333;
+    box-shadow: none;
+}
+
+/* Modal de Foto Individual */
+.photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.photo-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.photo-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.98);
+    cursor: pointer;
+}
+
+.photo-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.photo-modal-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #ff4757;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 3;
+    box-shadow: 0 4px 20px rgba(255, 71, 87, 0.5);
+}
+
+.photo-modal-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 6px 30px rgba(255, 71, 87, 0.8);
+}
+
+.photo-modal-prev,
+.photo-modal-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 71, 87, 0.9);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 3;
+    box-shadow: 0 4px 20px rgba(255, 71, 87, 0.5);
+}
+
+.photo-modal-prev {
+    left: 20px;
+}
+
+.photo-modal-next {
+    right: 20px;
+}
+
+.photo-modal-prev:hover,
+.photo-modal-next:hover {
+    background: #ff4757;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 30px rgba(255, 71, 87, 0.8);
+}
+
+#photoModalImg {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
+    object-fit: contain;
+}
+
+.photo-modal-media-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 90vh;
+}
+
+#photoModalVideo {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
+}
+
+.video-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 71, 87, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.month-modal-photo video,
+.photo-slot video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 767px) {
+    .month-modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .month-modal-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .month-modal-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .photo-modal-prev,
+    .photo-modal-next {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+
+    .photo-modal-close {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+    
+    .video-indicator {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
 }
 
 .final-counter {
