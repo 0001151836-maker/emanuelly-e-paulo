@@ -9,7 +9,7 @@ function playMusic() {
     audio.play()
         .then(() => {
             isPlaying = true;
-            musicIcon.textContent = '🔊';
+            musicIcon.innerHTML = '<i class="bi bi-volume-up-fill"></i>';
             musicToggle.classList.add('playing');
         })
         .catch(error => {
@@ -22,7 +22,7 @@ function playMusic() {
 function pauseMusic() {
     audio.pause();
     isPlaying = false;
-    musicIcon.textContent = '🎵';
+    musicIcon.innerHTML = '<i class="bi bi-volume-mute-fill"></i>';
     musicToggle.classList.remove('playing');
 }
 
@@ -47,7 +47,7 @@ document.getElementById('surpriseBtn').addEventListener('click', function() {
     setTimeout(() => {
         document.getElementById('loadingScreen').classList.remove('hidden');
         document.getElementById('loadingScreen').classList.add('visible');
-    }, 1300);
+    }, 1); // 1300
     
     // Aguarda 4 segundos (total) antes de mostrar a tela de aniversário
     setTimeout(() => {
@@ -63,10 +63,10 @@ document.getElementById('surpriseBtn').addEventListener('click', function() {
                 document.getElementById('anniversaryScreen').classList.add('fade-out');
                 setTimeout(() => {
                     document.getElementById('mainContent').classList.add('visible');
-                }, 800);
-            }, 5000);
-        }, 500);
-    }, 4000);
+                }, 1); //800
+            }, 1); // 5000
+        }, ); // 500
+    }, 1); // 4000
 });
 
 // Função de contador
@@ -224,12 +224,6 @@ function openMonthModal(monthName, year, mainMediaSlots) {
                 videoElement.muted = true;
                 videoElement.style.pointerEvents = 'none';
                 mediaDiv.appendChild(videoElement);
-                
-                // Adicionar indicador de vídeo
-                const indicator = document.createElement('div');
-                indicator.className = 'video-indicator';
-                indicator.innerHTML = '▶';
-                mediaDiv.appendChild(indicator);
             }
             
             // Adicionar evento de clique para abrir mídia individual
