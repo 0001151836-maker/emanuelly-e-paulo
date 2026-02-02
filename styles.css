@@ -5,6 +5,34 @@
 }
 
 body {
+  --sb-track-color: #232E33;
+  --sb-thumb-color: #ff004c;
+  --sb-size: 6px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 14px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 14px;
+  border: 1px solid #232e33;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+
+body {
     font-family: 'Georgia', serif;
     background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
     color: #fff;
@@ -31,31 +59,12 @@ body {
     justify-content: center;
     font-size: 24px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(255, 71, 87, 0.5);
 }
 
-.music-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(255, 71, 87, 0.8);
-}
-
-.music-toggle.playing {
-    animation: pulse-music 1s ease-in-out infinite;
-}
-
-@keyframes pulse-music {
-    0%, 100% { 
-        transform: scale(1); 
-        box-shadow: 0 4px 20px rgba(255, 71, 87, 0.5); 
-    }
-    50% { 
-        transform: scale(1.05); 
-        box-shadow: 0 6px 30px rgba(255, 71, 87, 0.8); 
-    }
-}
 
 .music-icon {
     pointer-events: none;
+    color: white;
 }
 
 .splash-screen {
@@ -601,7 +610,7 @@ body {
     z-index: 2;
 }
 
-.countdown-title {
+.countdown-title { 
     font-family: 'Brush Script MT', cursive;
     font-size: 32px;
     color: #ff4757;
@@ -780,6 +789,10 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
+}
+
+.photo-slot-hidden {
+    display: none;
 }
 
 .photo-slot:hover {
@@ -1126,7 +1139,7 @@ body {
 
 .final-counter {
     text-align: center;
-    padding: 50px 0 40px;
+    padding: 10px 0 10px;
     position: relative;
     z-index: 2;
 }
