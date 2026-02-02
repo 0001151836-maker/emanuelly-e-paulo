@@ -47,7 +47,7 @@ document.getElementById('surpriseBtn').addEventListener('click', function() {
     setTimeout(() => {
         document.getElementById('loadingScreen').classList.remove('hidden');
         document.getElementById('loadingScreen').classList.add('visible');
-    }, 1); // 1300
+    }, 1300); // 1300
     
     // Aguarda 4 segundos (total) antes de mostrar a tela de aniversário
     setTimeout(() => {
@@ -63,10 +63,10 @@ document.getElementById('surpriseBtn').addEventListener('click', function() {
                 document.getElementById('anniversaryScreen').classList.add('fade-out');
                 setTimeout(() => {
                     document.getElementById('mainContent').classList.add('visible');
-                }, 1); //800
-            }, 1); // 5000
-        }, ); // 500
-    }, 1); // 4000
+                }, 800); //800
+            }, 5000); // 5000
+        }, 500); // 500
+    }, 4000); // 4000
 });
 
 // Função de contador
