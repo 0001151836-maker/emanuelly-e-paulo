@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emanuelly e Paulo - Nosso Amor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Player de Música -->
     <div class="music-player" id="musicPlayer">
         <button class="music-toggle" id="musicToggle">
-            <span class="music-icon">🎵</span>
+            <span class="music-icon"><i class="bi bi-volume-mute-fill"></i></span>
         </button>
     </div>
     
@@ -156,6 +157,11 @@
                     <div class="time-box"><div class="time-number" id="seconds">0</div><div class="time-label">Seg</div></div>
                 </div>
             </div>
+             <div class="final-counter">
+                <h2 class="final-title">Te Amando Há </h2>
+                <div class="days-number" id="totalDays">0</div>
+               
+            </div>
 
             <div class="timeline-section">
                 <h2 class="timeline-title">Nossos Momentos</h2>
@@ -188,13 +194,13 @@
                                <div class="photo-slot">
                                     <video src="fevereiro 3.mp4" alt="Foto Fevereiro 4" preload="metadata"  poster="print 3.png">
                                 </div>
-                                <div class="photo-slot">
+                                <div class="photo-slot-hidden photo-slot">
                                     <img src="fevereiro 4.jpg" alt="Foto Fevereiro 5">
                                 </div>
-                                <div class="photo-slot">
+                                <div class="photo-slot-hidden photo-slot">
                                     <img src="fevereiro 6.jpg" alt="Foto Fevereiro 6">
                                 </div>
-                                <div class="photo-slot">
+                                <div class="photo-slot-hidden photo-slot">
                                     <img src="fevereiro 8.jpg" alt="Foto Fevereiro 7">
                                 </div>
                             </div>
@@ -669,19 +675,9 @@
                     </div>
                 </div>
             </div>
-            <div class="final-counter">
-                <h2 class="final-title">Juntos Felizes</h2>
-                <div class="days-number" id="totalDays">0</div>
-                <div class="days-label">Dias de Amor</div>
-            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
