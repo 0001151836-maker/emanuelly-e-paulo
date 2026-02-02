@@ -1194,3 +1194,9 @@ body {
         font-size: 22px;
     }
 }
+
+h6{
+    font-family: "Barlow";
+    font-size: 0.8em;
+    text-align: center;
+}
